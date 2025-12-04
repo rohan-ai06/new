@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Quiz Battle - Space Shooter</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for Tech Look -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <canvas id="gameCanvas"></canvas>
+
+    <div class="stats-overlay">
+        <div class="stat-box">
+            <div class="stat-label">PILOT STATUS</div>
+            <div class="lives-container" id="livesContainer">🛡️🛡️🛡️</div>
+        </div>
+
+        <div class="boss-hp-container">
+            <div class="boss-label">BOSS INTEGRITY</div>
+            <div class="boss-hp-bar-frame">
+                <div class="boss-hp-fill" id="bossHpFill"></div>
+            </div>
+        </div>
+
+        <div class="stat-box">
+            <div class="stat-label">SCORE</div>
+            <div class="score-text" id="scoreText">0</div>
+        </div>
+    </div>
+
+    <!-- Mute Button -->
+    <button id="muteBtn"
+        style="position: fixed; top: 100px; right: 20px; z-index: 200; background: rgba(0,0,0,0.5); border: 1px solid #00ff88; color: #00ff88; padding: 5px 10px; cursor: pointer; font-family: 'Orbitron', sans-serif;">
+        🔊 MUSIC ON
+    </button>
+
+    <div class="quiz-overlay" id="quizOverlay">
+        <div class="quiz-box">
+            <div class="question-text" id="questionText">Loading Question...</div>
+            <div class="options-grid" id="optionsGrid">
+                <!-- Options injected here -->
+            </div>
+            <div class="feedback" id="feedbackText"></div>
+        </div>
+    </div>
+
+    <div class="game-over-overlay" id="gameOverOverlay">
+        <h1 id="gameOverTitle">GAME OVER</h1>
+        <div id="finalScore">Score: 0</div>
+        <button onclick="location.reload()">PLAY AGAIN</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
