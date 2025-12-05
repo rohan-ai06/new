@@ -389,60 +389,249 @@ for (let i = 0; i < 3; i++) {
 
 // --- QUIZ DATA ---
 // --- QUIZ DATA POOLS ---
+ / --- QUIZ DATA POOLS ---
 const questionsEasy = [
-    { q: "What is AWS?", options: ["A social media platform", "A cloud service provider", "A mobile operating system", "A programming framework"], a: 1 },
-    { q: "What is cloud computing?", options: ["Running programs offline", "Delivering IT resources over the internet", "Buying physical servers for local use", "A way to store emails only"], a: 1 },
-    { q: "What is an AWS Region?", options: ["A single data center", "A group of Availability Zones", "A private network", "A type of storage"], a: 1 },
-    { q: "What is an Availability Zone (AZ)?", options: ["A networking tool", "A physical data center inside a Region", "A type of EC2 instance", "A billing category"], a: 1 },
-    { q: "What is Amazon EC2 used for?", options: ["Creating databases", "Running virtual servers", "Managing billing", "Storing objects"], a: 1 },
-    { q: "What does S3 store?", options: ["Virtual machines", "Object data like images, files, videos", "SQL queries", "Lambda functions"], a: 1 },
-    { q: "Which AWS service is serverless?", options: ["EC2", "Lambda", "EBS", "CloudFront"], a: 1 },
-    { q: "What is Auto Scaling used for?", options: ["Encrypting data", "Automatically adding or removing EC2 instances", "Creating IAM users", "Running SQL databases"], a: 1 },
-    { q: "Which service provides NoSQL storage?", options: ["RDS", "DynamoDB", "Redshift", "EFS"], a: 1 },
-    { q: "What does IAM stand for?", options: ["Internal Access Management", "Identity and Access Management", "Internet Allocation Module", "Instance Access Monitoring"], a: 1 },
-    { q: "What is the purpose of a Security Group?", options: ["To monitor billing", "To control inbound/outbound traffic for EC2", "To increase storage capacity", "To create VPCs"], a: 1 },
-    { q: "What is RDS used for?", options: ["Running NoSQL queries", "Hosting managed relational databases", "Storing images", "Running container apps"], a: 1 },
-    { q: "What does EBS provide?", options: ["Block storage for EC2", "Object storage for files", "SQL reporting", "Networking firewalls"], a: 0 },
-    { q: "Which AWS service allows uploading code without managing servers?", options: ["S3", "Lambda", "CloudWatch", "Gateway"], a: 1 },
-    { q: "What does VPC stand for?", options: ["Virtual Private Cloud", "Virtual Processing Center", "Visual Private Console", "Virtual Packet Container"], a: 0 },
-    { q: "What is EFS mainly used for?", options: ["Long-term archival", "Shared file storage across multiple EC2 instances", "Storing IAM users", "Creating DNS zones"], a: 1 },
-    { q: "What is the benefit of multiple Availability Zones?", options: ["Easier billing", "High availability and fault tolerance", "Faster IAM creation", "Free storage"], a: 1 }
+  { 
+    q: "What is Auto Scaling used for?",
+    options: ["Creating IAM users", "Automatically adding or removing EC2 instances", "Running SQL databases", "Encrypting data"],
+    a: 1
+  },
+  { 
+    q: "Which AWS service allows uploading code without managing servers?",
+    options: ["Lambda", "CloudWatch", "Gateway", "S3"],
+    a: 0
+  },
+  { 
+    q: "What is an Availability Zone (AZ)?",
+    options: ["A type of EC2 instance", "A physical data center inside a Region", "A networking tool", "A billing category"],
+    a: 1
+  },
+  { 
+    q: "What is the purpose of a Security Group?",
+    options: ["To increase storage capacity", "To control inbound/outbound traffic for EC2", "To create VPCs", "To monitor billing"],
+    a: 1
+  },
+  { 
+    q: "What does IAM stand for?",
+    options: ["Instance Access Monitoring", "Internal Access Management", "Identity and Access Management", "Internet Allocation Module"],
+    a: 2
+  },
+  { 
+    q: "What does VPC stand for?",
+    options: ["Virtual Private Cloud", "Virtual Packet Container", "Virtual Processing Center", "Visual Private Console"],
+    a: 0
+  },
+  { 
+    q: "What does S3 store?",
+    options: ["SQL queries", "Object data like images, files, videos", "Lambda functions", "Virtual machines"],
+    a: 1
+  },
+  { 
+    q: "Which AWS service is serverless?",
+    options: ["CloudFront", "Lambda", "EC2", "EBS"],
+    a: 1
+  },
+  { 
+    q: "Which service provides NoSQL storage?",
+    options: ["Redshift", "DynamoDB", "EFS", "RDS"],
+    a: 1
+  },
+  { 
+    q: "What is AWS?",
+    options: ["A mobile operating system", "A cloud service provider", "A social media platform", "A programming framework"],
+    a: 1
+  },
+  { 
+    q: "What is cloud computing?",
+    options: ["Delivering IT resources over the internet", "Buying physical servers for local use", "A way to store emails only", "Running programs offline"],
+    a: 0
+  },
+  { 
+    q: "What is an AWS Region?",
+    options: ["A group of Availability Zones", "A private network", "A type of storage", "A single data center"],
+    a: 0
+  },
+  { 
+    q: "What is RDS used for?",
+    options: ["Hosting managed relational databases", "Storing images", "Running NoSQL queries", "Running container apps"],
+    a: 0
+  },
+  { 
+    q: "What does EBS provide?",
+    options: ["Block storage for EC2", "Object storage for files", "Networking firewalls", "SQL reporting"],
+    a: 0
+  },
+  { 
+    q: "What is Amazon EC2 used for?",
+    options: ["Managing billing", "Running virtual servers", "Creating databases", "Storing objects"],
+    a: 1
+  },
+  { 
+    q: "What is EFS mainly used for?",
+    options: ["Long-term archival", "Creating DNS zones", "Shared file storage across multiple EC2 instances", "Storing IAM users"],
+    a: 2
+  },
+  { 
+    q: "What is the benefit of multiple Availability Zones?",
+    options: ["High availability and fault tolerance", "Faster IAM creation", "Easier billing", "Free storage"],
+    a: 0
+  }
+];
+const questionsMedium = [
+  {
+    q: "What is the purpose of a NAT Gateway?",
+    options: ["Creates IAM policies", "Allows instances in private subnets to access the internet", "Provides internet access to public subnets", "Blocks all internet traffic"],
+    a: 1
+  },
+  {
+    q: "What type of database engine does RDS NOT support?",
+    options: ["PostgreSQL", "Oracle", "MySQL", "MongoDB"],
+    a: 3
+  },
+  {
+    q: "What does a Route Table in a VPC do?",
+    options: ["Encrypts packets", "Stores DNS records", "Controls how traffic is directed in the network", "Manages IAM roles"],
+    a: 2
+  },
+  {
+    q: "Which AWS service manages Docker containers without provisioning EC2 servers?",
+    options: ["CloudFront", "ECR", "Fargate", "EC2"],
+    a: 2
+  },
+  {
+    q: "In Lambda, what causes a 'cold start'?",
+    options: ["High traffic load", "Incorrect IAM permissions", "Creating a new execution environment", "Low storage space"],
+    a: 2
+  },
+  {
+    q: "What does S3 Versioning help with?",
+    options: ["Recovering accidentally deleted or overwritten files", "Encrypting objects", "Faster upload speed", "Reducing storage cost"],
+    a: 0
+  },
+  {
+    q: "What is the advantage of S3 Intelligent-Tiering?",
+    options: ["It automatically moves data to cheaper storage tiers", "It improves upload speed", "It encrypts all objects", "It increases object size limits"],
+    a: 0
+  },
+  {
+    q: "What is a benefit of Multi-AZ deployment in RDS?",
+    options: ["Automatic failover during outages", "Faster development", "Lower cost", "No backups required"],
+    a: 0
+  },
+  {
+    q: "What is the main purpose of an Elastic Load Balancer (ELB)?",
+    options: ["Storing backups", "Encrypting data", "Distributing incoming traffic across resources", "Running SQL queries"],
+    a: 2
+  },
+  {
+    q: "What is the purpose of a NAT Gateway?",
+    options: ["Blocks all internet traffic", "Allows instances in private subnets to access the internet", "Creates IAM policies", "Provides internet access to public subnets"],
+    a: 1
+  },
+  {
+    q: "Which EC2 pricing option is best for long-term, steady workloads?",
+    options: ["On-Demand", "Dedicated Hosts", "Reserved Instances", "Spot Instances"],
+    a: 2
+  },
+  {
+    q: "For unpredictable workloads, which compute option is most efficient?",
+    options: ["Dedicated Hosts", "Lambda", "Reserved Instances", "On-Prem Servers"],
+    a: 1
+  },
+  {
+    q: "Which AWS model describes how responsibilities are shared?",
+    options: ["Elasticity Model", "Shared Responsibility Model", "Pay-as-you-go Model", "Multi-AZ Model"],
+    a: 1
+  },
+  {
+    q: "What does DynamoDB automatically manage for you?",
+    options: ["Scaling, backups, and performance", "Index creation only", "SQL optimization", "EC2 instance launching"],
+    a: 0
+  },
+  {
+    q: "Which AWS storage option provides shared file storage for multiple EC2 instances?",
+    options: ["IAM", "S3 Glacier", "EFS", "EBS"],
+    a: 2
+  },
+  {
+    q: "What AWS service is best suited for caching frequently accessed data?",
+    options: ["ElastiCache", "DynamoDB Streams", "S3 Glacier", "EBS"],
+    a: 0
+  }
 ];
 
-const questionsMedium = [
-    { q: "Which AWS model describes how responsibilities are shared?", options: ["Pay-as-you-go Model", "Multi-AZ Model", "Shared Responsibility Model", "Elasticity Model"], a: 2 },
-    { q: "Which EC2 pricing option is best for long-term, steady workloads?", options: ["Spot Instances", "On-Demand", "Reserved Instances", "Dedicated Hosts"], a: 2 },
-    { q: "What is the main purpose of an Elastic Load Balancer (ELB)?", options: ["Running SQL queries", "Distributing incoming traffic across resources", "Encrypting data", "Storing backups"], a: 1 },
-    { q: "For unpredictable workloads, which compute option is most efficient?", options: ["Reserved Instances", "Lambda", "On-Prem Servers", "Dedicated Hosts"], a: 1 },
-    { q: "Which AWS storage option provides shared file storage for multiple EC2 instances?", options: ["EBS", "EFS", "S3 Glacier", "IAM"], a: 1 },
-    { q: "What does DynamoDB automatically manage for you?", options: ["Index creation only", "Scaling, backups, and performance", "EC2 instance launching", "SQL optimization"], a: 1 },
-    { q: "What type of database engine does RDS NOT support?", options: ["MySQL", "PostgreSQL", "Oracle", "MongoDB"], a: 3 },
-    { q: "What does S3 Versioning help with?", options: ["Reducing storage cost", "Recovering accidentally deleted or overwritten files", "Encrypting objects", "Faster upload speed"], a: 1 },
-    { q: "What is the purpose of a NAT Gateway?", options: ["Provides internet access to public subnets", "Allows instances in private subnets to access the internet", "Blocks all internet traffic", "Creates IAM policies"], a: 1 },
-    { q: "What does it mean that Security Groups are stateful?", options: ["They remember past logins", "Return traffic is automatically allowed", "They block all outbound traffic", "They encrypt all data"], a: 1 },
-    { q: "In Lambda, what causes a 'cold start'?", options: ["Low storage space", "Creating a new execution environment", "High traffic load", "Incorrect IAM permissions"], a: 1 },
-    { q: "What is the advantage of S3 Intelligent-Tiering?", options: ["It automatically moves data to cheaper storage tiers", "It increases object size limits", "It encrypts all objects", "It improves upload speed"], a: 0 },
-    { q: "Which AWS service manages Docker containers without provisioning EC2 servers?", options: ["EC2", "Fargate", "ECR", "CloudFront"], a: 1 },
-    { q: "What is a benefit of Multi-AZ deployment in RDS?", options: ["Faster development", "Automatic failover during outages", "Lower cost", "No backups required"], a: 1 },
-    { q: "What does a Route Table in a VPC do?", options: ["Controls how traffic is directed in the network", "Manages IAM roles", "Stores DNS records", "Encrypts packets"], a: 0 },
-    { q: "What AWS service is best suited for caching frequently accessed data?", options: ["S3 Glacier", "ElastiCache", "DynamoDB Streams", "EBS"], a: 1 }
-];
 
 const questionsHard = [
-    { q: "Which scenario BEST fits using Spot Instances?", options: ["Running critical production apps", "Running fault-tolerant workloads like batch processing", "Hosting a relational database", "Storing long-term backups"], a: 1 },
-    { q: "What is a major cause of high latency in Lambda cold starts?", options: ["IAM misconfiguration", "The function must initialize a new runtime environment", "Lack of S3 storage", "Network ACL restrictions"], a: 1 },
-    { q: "DynamoDB distributes data across partitions based on:", options: ["Object size", "Sort key", "Partition key", "Lambda triggers"], a: 2 },
-    { q: "What is a common use of VPC Peering?", options: ["To connect two VPCs privately without going over the internet", "To reduce S3 storage cost", "To auto-scale EC2 instances", "To manage IAM roles"], a: 0 },
-    { q: "What is the key difference between Security Groups and NACLs?", options: ["Security Groups are stateless; NACLs are stateful", "Security Groups are stateful; NACLs are stateless", "Both are stateless", "Both are stateful"], a: 1 },
-    { q: "Why is Aurora faster than traditional RDS engines?", options: ["It uses a NoSQL architecture", "It stores data across a distributed storage layer separate from compute", "It runs only on EC2 Spot Instances", "It uses Lambda behind the scenes"], a: 1 },
-    { q: "S3 Glacier Deep Archive is ideal for:", options: ["Real-time AI workloads", "Data accessed once a week", "Rarely accessed data with retrieval times of hours", "Running container apps"], a: 2 },
-    { q: "What is the main benefit of using AWS Fargate over ECS with EC2?", options: ["Higher memory capacity", "Zero server management—AWS handles the compute layer", "Guaranteed lowest cost", "Easier IAM configuration"], a: 1 },
-    { q: "What happens during an RDS failover in Multi-AZ deployments?", options: ["Database becomes read-only", "DNS automatically switches to a standby replica", "You must restart the database manually", "All data must be restored from backup"], a: 1 },
-    { q: "What is the purpose of a VPC Endpoint for S3?", options: ["Encrypt S3 objects", "Provide private access to S3 without using the public internet", "Increase S3 bucket storage", "Accelerate downloads"], a: 1 },
-    { q: "Which AWS service automatically provisions and manages container clusters?", options: ["S3", "IAM", "EKS", "EFS"], a: 2 },
-    { q: "What is the main advantage of DynamoDB Global Tables?", options: ["Lower storage cost", "Multi-region, fully active replication for low-latency access", "Automatic SQL query optimization", "Faster Lambda cold starts"], a: 1 },
-    { q: "What happens when an S3 bucket has versioning enabled and an object is deleted?", options: ["S3 removes it permanently", "A delete marker is added, and older versions remain", "All versions are deleted", "Objects are moved to Glacier automatically"], a: 1 },
-    { q: "What is AWS Transit Gateway used for?", options: ["Running serverless code", "Centralized connectivity between multiple VPCs and on-prem networks", "Managing RDS backups", "Encrypting Lambda functions"], a: 1 }
+  {
+    q: "What is a major cause of high latency in Lambda cold starts?",
+    options: ["Network ACL restrictions", "IAM misconfiguration", "The function must initialize a new runtime environment", "Lack of S3 storage"],
+    a: 2
+  },
+  {
+    q: "What is the purpose of a VPC Endpoint for S3?",
+    options: ["Encrypt S3 objects", "Accelerate downloads", "Provide private access to S3 without using the public internet", "Increase S3 bucket storage"],
+    a: 2
+  },
+  {
+    q: "What is AWS Transit Gateway used for?",
+    options: ["Encrypting Lambda functions", "Managing RDS backups", "Running serverless code", "Centralized connectivity between multiple VPCs and on-prem networks"],
+    a: 3
+  },
+  {
+    q: "Which AWS service automatically provisions and manages container clusters?",
+    options: ["EKS", "EFS", "IAM", "S3"],
+    a: 0
+  },
+  {
+    q: "DynamoDB distributes data across partitions based on:",
+    options: ["Sort key", "Partition key", "Object size", "Lambda triggers"],
+    a: 1
+  },
+  {
+    q: "Which scenario BEST fits using Spot Instances?",
+    options: ["Running fault-tolerant workloads like batch processing", "Storing long-term backups", "Running critical production apps", "Hosting a relational database"],
+    a: 0
+  },
+  {
+    q: "What happens during an RDS failover in Multi-AZ deployments?",
+    options: ["You must restart the database manually", "DNS automatically switches to a standby replica", "Database becomes read-only", "All data must be restored from backup"],
+    a: 1
+  },
+  {
+    q: "Why is Aurora faster than traditional RDS engines?",
+    options: ["It uses a NoSQL architecture", "It uses Lambda behind the scenes", "It stores data across a distributed storage layer separate from compute", "It runs only on EC2 Spot Instances"],
+    a: 2
+  },
+  {
+    q: "What is the key difference between Security Groups and NACLs?",
+    options: ["Security Groups are stateless; NACLs are stateful", "Security Groups are stateful; NACLs are stateless", "Both are stateless", "Both are stateful"],
+    a: 1
+  },
+  {
+    q: "What is a common use of VPC Peering?",
+    options: ["To connect two VPCs privately without going over the internet", "To auto-scale EC2 instances", "To manage IAM roles", "To reduce S3 storage cost"],
+    a: 0
+  },
+  {
+    q: "S3 Glacier Deep Archive is ideal for:",
+    options: ["Rarely accessed data with retrieval times of hours", "Real-time AI workloads", "Running container apps", "Data accessed once a week"],
+    a: 0
+  },
+  {
+    q: "What is the main benefit of using AWS Fargate over ECS with EC2?",
+    options: ["Zero server management—AWS handles the compute layer", "Easier IAM configuration", "Guaranteed lowest cost", "Higher memory capacity"],
+    a: 0
+  },
+  {
+    q: "What is the main advantage of DynamoDB Global Tables?",
+    options: ["Multi-region, fully active replication for low-latency access", "Automatic SQL query optimization", "Faster Lambda cold starts", "Lower storage cost"],
+    a: 0
+  },
+  {
+    q: "What happens when an S3 bucket has versioning enabled and an object is deleted?",
+    options: ["All versions are deleted", "A delete marker is added, and older versions remain", "Objects are moved to Glacier automatically", "S3 removes it permanently"],
+    a: 1
+  }
 ];
 
 let currentSessionDeck = [];
@@ -2106,3 +2295,4 @@ window.addEventListener('click', () => {
     window.speechSynthesis.getVoices();
 }, { once: true });
 gameLoop();
+
